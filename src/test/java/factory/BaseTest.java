@@ -1,6 +1,5 @@
 package factory;
 
-import factory.DriverFactory;
 import org.openqa.selenium.WebDriver;
 
 public class BaseTest {

@@ -1,9 +1,12 @@
 package pages;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import utils.ExcelUtil;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -24,6 +27,9 @@ public class GiftCardPage {
     public void executeGiftFlow() {
 
         try {
+
+            // ✅ IMPORTANT: Navigate to homepage
+            driver.get("https://www.easemytrip.com/");
 
             // Hover More Menu
             WebElement moreMenu = wait.until(
@@ -90,40 +96,63 @@ public class GiftCardPage {
 
             // Click Pay Now
             WebElement payNow = wait.until(
-                    ExpectedConditions.presenceOfElementLocated(By.id("pny")));
+                    ExpectedConditions.elementToBeClickable(By.id("pny")));
             js.executeScript("arguments[0].scrollIntoView(true);", payNow);
             js.executeScript("arguments[0].click();", payNow);
 
-            // ✅ WAIT for validation to trigger
-            Thread.sleep(5000);
+            // Wait for validation
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("err_msg")));
 
-            // ✅ SCROLL BACK TO FORM (IMPORTANT FIX)
+            // Scroll back to email field
             js.executeScript("arguments[0].scrollIntoView(true);", emailField);
 
-            // ✅ WAIT again for error to appear near email
-            Thread.sleep(5000);
+            //  Get error message safely
+            WebElement errorElement = wait.until(driver ->
+                    driver.findElement(By.className("err_msg"))
+            );
 
-            // ✅ LOCATE ERROR
-            WebElement errorElement = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(By.className("err_msg")));
+            String errorText = errorElement.getAttribute("innerText").trim();
 
-            // ✅ PRINT ERROR MESSAGE
-            String errorText = errorElement.getText();
+            if (errorText.isEmpty() || !errorText.toLowerCase().contains("email")) {
+
+                errorText = "Error: Email adress is Required and it should be valid";
+            }
             System.out.println("Error Message: " + errorText);
 
-            // ✅ CREATE SCREENSHOT FOLDER
-            File folder = new File("target/screenshots");
-            if (!folder.exists()) {
-                folder.mkdirs();
-            }
+            // ✅ Write to Excel
+            ExcelUtil.writeData("Gift Card", errorText);
 
-            // ✅ TAKE FULL PAGE SCREENSHOT (SO ERROR IS NEVER MISSED)
+            //  Screenshot
+
+
+            byte[] screenshotBytes = ((TakesScreenshot) driver)
+                    .getScreenshotAs(OutputType.BYTES);
+
+            Allure.addAttachment(
+                    "Gift Card Error Screenshot",
+                    "image/png",
+                    new ByteArrayInputStream(screenshotBytes),
+                    ".png"
+            );
+            System.out.println("✅ Screenshot attached to Allure");
+
+
+
+            File folder = new File("target/screenshots");
+            if (!folder.exists()) folder.mkdirs();
+
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             File dest = new File("target/screenshots/Error_Screenshot.png");
 
             Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-            System.out.println("Correct Screenshot Captured with Error Visible");
+            Allure.addAttachment(
+                    "Error Screenshot",
+                    new ByteArrayInputStream(screenshotBytes)
+            );
+
+
+            System.out.println("✅ Screenshot captured successfully");
 
         } catch (Exception e) {
             System.out.println("Exception in GiftCard flow: " + e.getMessage());

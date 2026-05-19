@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
+import utils.ExcelUtil;
 
 import java.time.Duration;
 import java.util.List;
@@ -13,7 +14,7 @@ public class CabPage {
 
     public CabPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     public void bookCab() {
@@ -143,8 +144,11 @@ public class CabPage {
         // Print output safely
         if (minPrice == Integer.MAX_VALUE) {
             System.out.println("No prices found!");
+            ExcelUtil.writeData("Cab Booking", "No price found");
         } else {
             System.out.println("Lowest SUV Cab Price: " + minPrice);
+
+            ExcelUtil.writeData("Cab Booking", "Lowest Price: " + minPrice);
         }
     }
 }

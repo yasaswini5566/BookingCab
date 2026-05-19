@@ -2,8 +2,8 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
+
 import java.time.Duration;
-import java.util.*;
 
 public class HotelPage {
 
@@ -17,42 +17,41 @@ public class HotelPage {
 
     public void getAdultList() {
 
+        // ✅ Click Hotels tab
         wait.until(ExpectedConditions.elementToBeClickable(
-                By.cssSelector("span.hotelmenuico"))).click();
+                By.className("hotelmenuico"))).click();
 
-        WebElement arrow = driver.findElement(By.xpath(
-                "//div[contains(@class,'roomGuests')]//i[@class='down_arw_htl']"));
-        arrow.click();
+        // ✅ Open guest selection
+        WebElement guest = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//div[contains(@class,'roomGuests')]")));
+        guest.click();
 
+        // ✅ Locate plus button and value
         WebElement plusBtn = driver.findElement(By.id("Adults_room_1_1_plus"));
-        WebElement number = driver.findElement(By.id("Adults_room_1_1"));
+        WebElement value   = driver.findElement(By.id("Adults_room_1_1"));
 
-        List<Integer> adultList = new ArrayList<>();
+        int count = Integer.parseInt(value.getText());
 
-        int currentValue = Integer.parseInt(number.getText());
-        adultList.add(currentValue);
-
+        // ✅ Keep clicking until max reached
         while (true) {
-
-            int before = Integer.parseInt(number.getText());
-            plusBtn.click();
-
             try {
-                wait.until(ExpectedConditions.not(
-                        ExpectedConditions.textToBePresentInElement(number, String.valueOf(before))));
-            } catch (TimeoutException e) {
+                plusBtn.click();
+                Thread.sleep(500);
+
+                int newVal = Integer.parseInt(value.getText());
+
+                if (newVal == count) {
+                    break; // max reached
+                }
+
+                count = newVal;
+
+            } catch (Exception e) {
                 break;
             }
-
-            int after = Integer.parseInt(number.getText());
-
-            if (after == before) {
-                break;
-            }
-
-            adultList.add(after);
         }
 
-        System.out.println("Adult Counts: " + adultList);
+        System.out.println("✅ Max adults allowed in single room: " + count);
     }
 }

@@ -2,49 +2,47 @@ package hooks;
 
 import factory.DriverFactory;
 import io.cucumber.java.*;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;
-import utils.ScreenshotUtil;
-import utils.LoggerUtil;
-
-import java.io.ByteArrayInputStream;
+import utils.ExcelUtil;
 
 public class Hooks {
 
-    WebDriver driver;
+    private static WebDriver driver;
 
+    // ✅ Runs BEFORE EACH SCENARIO but opens browser ONLY ONCE
     @Before
-    public void setUp(Scenario scenario) {
+    public void setUp() {
 
-        String browser = ConfigReader.getProperty("browser");
+        if (DriverFactory.getDriver() == null) {
 
-        driver = DriverFactory.initDriver(browser);
+            String browser = ConfigReader.getProperty("browser");
 
-        driver.get(ConfigReader.getProperty("url"));
+            driver = DriverFactory.initDriver(browser);
+            driver.get(ConfigReader.getProperty("url"));
 
-        LoggerUtil.info("Application launched");
+            System.out.println("✅ Browser launched ONLY ONCE");
+        } else {
+            driver = DriverFactory.getDriver();
+        }
     }
 
+    // ✅ DO NOT CLOSE BROWSER HERE
     @After
-    public void tearDown(Scenario scenario) {
+    public void afterScenario() {
+        System.out.println("✅ Scenario completed");
+    }
 
-        driver = DriverFactory.getDriver();
+    // ✅ CLOSE ONLY AFTER ALL 3 TESTCASES
+    @AfterAll
+    public static void tearDownAll() {
 
-        if (scenario.isFailed()) {
+        ExcelUtil.saveExcel();
 
-            String path = ScreenshotUtil.captureScreenshot(scenario.getName());
-
-            byte[] screenshot = ((TakesScreenshot) driver)
-                    .getScreenshotAs(OutputType.BYTES);
-
-            io.qameta.allure.Allure.addAttachment(
-                    "Failure Screenshot",
-                    new ByteArrayInputStream(screenshot)
-            );
-
-            LoggerUtil.error("Test Failed");
+        if (driver != null) {
+            driver.quit();   // ✅ close only once
         }
 
-        DriverFactory.quitDriver();
+        System.out.println("✅ Browser closed AFTER ALL TEST CASES");
     }
 }
