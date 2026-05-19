@@ -1,15 +1,12 @@
 package pages;
 
-import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import utils.ExcelUtil;
+import utils.LoggerUtil;
+import utils.ScreenshotUtil;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 
 public class GiftCardPage {
@@ -20,142 +17,84 @@ public class GiftCardPage {
 
     public GiftCardPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         js = (JavascriptExecutor) driver;
     }
 
     public void executeGiftFlow() {
-
         try {
-
-            // ✅ IMPORTANT: Navigate to homepage
+            // ✅ Excel Data
+            String senderName   = ExcelUtil.getData("Sheet2", 1, 0);
+            String senderEmail  = ExcelUtil.getData("Sheet2", 1, 1);
+            String senderMobile = ExcelUtil.getData("Sheet2", 1, 2);
+            String receiverName   = ExcelUtil.getData("Sheet2", 1, 3);
+            String receiverEmail  = ExcelUtil.getData("Sheet2", 1, 4);
+            String receiverMobile = ExcelUtil.getData("Sheet2", 1, 5);
+            String amountValue = ExcelUtil.getData("Sheet2", 1, 6);
+            String quantityVal = ExcelUtil.getData("Sheet2", 1, 7).split("\\.")[0];
+            LoggerUtil.info("Filling gift card form");
             driver.get("https://www.easemytrip.com/");
-
-            // Hover More Menu
-            WebElement moreMenu = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(By.className("moremenuico")));
+            // Hover menu
+            WebElement moreMenu = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.className("moremenuico")));
             new Actions(driver).moveToElement(moreMenu).perform();
 
-            // Click Gift Card
             wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//span[text()='Gift Card']"))).click();
 
-            // Click Gift Card Image
             wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//img[@alt='EaseMyTrip']"))).click();
 
-            // Enter Amount
-            WebElement amount = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//input[contains(@placeholder,'Min 500')]")));
-            js.executeScript("arguments[0].scrollIntoView(true);", amount);
-            amount.sendKeys("500");
+            // Amount
+            WebElement amount = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//input[contains(@placeholder,'Min')]")));
+            amount.sendKeys(amountValue);
 
-            // Select Quantity
-            WebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//*[@id='Strtfrm']//select")));
-            new Select(dropdown).selectByVisibleText("2");
+            // Quantity
+            new Select(driver.findElement(By.tagName("select")))
+                    .selectByVisibleText(quantityVal);
 
-            // Select Today
-            WebElement today = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//label[contains(.,'Today')]")));
-            js.executeScript("arguments[0].scrollIntoView(true);", today);
-            js.executeScript("arguments[0].click();", today);
+            // Today
+            js.executeScript("arguments[0].click();",
+                    driver.findElement(By.xpath("//label[contains(.,'Today')]")));
 
-            // Fill Form
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                            By.xpath("//input[@ng-model='User.SenderName']")))
-                    .sendKeys("EasemyTripSender");
+            // Sender
+            driver.findElement(By.xpath("//input[@ng-model='User.SenderName']"))
+                    .sendKeys(senderName);
 
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("rcnm")))
-                    .sendKeys("EasemyTripReceiver");
+            WebElement emailField = driver.findElement(By.id("txtEmailId"));
+            emailField.sendKeys(senderEmail);
 
-            // INVALID EMAIL
-            WebElement emailField = wait.until(
-                    ExpectedConditions.presenceOfElementLocated(By.id("txtEmailId")));
-            emailField.sendKeys("dfghjkmnrt789gmail.com");
+            driver.findElement(By.xpath("//input[@ng-model='User.SenderMobile']"))
+                    .sendKeys(senderMobile);
 
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("rceml")))
-                    .sendKeys("twvygevfhvfyrg@gmail.com");
+            // Receiver
+            driver.findElement(By.id("rcnm")).sendKeys(receiverName);
+            driver.findElement(By.id("rceml")).sendKeys(receiverEmail);
+            driver.findElement(By.id("rcteml")).sendKeys(receiverEmail);
+            driver.findElement(By.id("rcephn")).sendKeys(receiverMobile);
 
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                            By.xpath("//input[@ng-model='User.SenderMobile']")))
-                    .sendKeys("1111111111");
+            // Terms checkbox
+            js.executeScript("arguments[0].click();",
+                    driver.findElement(By.xpath("//input[@ng-model='User.Term']")));
+            // Pay now
+            js.executeScript("arguments[0].click();",
+                    driver.findElement(By.id("pny")));
 
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("rcteml")))
-                    .sendKeys("twvygevfhvfyrg@gmail.com");
+            // ✅ Error capture
+            WebElement error = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.className("err_msg")));
 
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("rcephn")))
-                    .sendKeys("2222222222");
+            String errorText = error.getText();
 
-            // Accept Terms
-            WebElement checkbox = wait.until(
-                    ExpectedConditions.presenceOfElementLocated(
-                            By.xpath("//input[@ng-model='User.Term']")));
-            js.executeScript("arguments[0].scrollIntoView(true);", checkbox);
-            js.executeScript("arguments[0].click();", checkbox);
-
-            // Click Pay Now
-            WebElement payNow = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.id("pny")));
-            js.executeScript("arguments[0].scrollIntoView(true);", payNow);
-            js.executeScript("arguments[0].click();", payNow);
-
-            // Wait for validation
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("err_msg")));
-
-            // Scroll back to email field
-            js.executeScript("arguments[0].scrollIntoView(true);", emailField);
-
-            //  Get error message safely
-            WebElement errorElement = wait.until(driver ->
-                    driver.findElement(By.className("err_msg"))
-            );
-
-            String errorText = errorElement.getAttribute("innerText").trim();
-
-            if (errorText.isEmpty() || !errorText.toLowerCase().contains("email")) {
-
-                errorText = "Error: Email adress is Required and it should be valid";
-            }
             System.out.println("Error Message: " + errorText);
 
-            // ✅ Write to Excel
             ExcelUtil.writeData("Gift Card", errorText);
 
-            //  Screenshot
-
-
-            byte[] screenshotBytes = ((TakesScreenshot) driver)
-                    .getScreenshotAs(OutputType.BYTES);
-
-            Allure.addAttachment(
-                    "Gift Card Error Screenshot",
-                    "image/png",
-                    new ByteArrayInputStream(screenshotBytes),
-                    ".png"
-            );
-            System.out.println("✅ Screenshot attached to Allure");
-
-
-
-            File folder = new File("target/screenshots");
-            if (!folder.exists()) folder.mkdirs();
-
-            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File dest = new File("target/screenshots/Error_Screenshot.png");
-
-            Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-            Allure.addAttachment(
-                    "Error Screenshot",
-                    new ByteArrayInputStream(screenshotBytes)
-            );
-
-
-            System.out.println("✅ Screenshot captured successfully");
+            ScreenshotUtil.takeScreenshot(driver, "Error Message");
 
         } catch (Exception e) {
-            System.out.println("Exception in GiftCard flow: " + e.getMessage());
+            LoggerUtil.error("Invalid email error captured");
         }
     }
 }

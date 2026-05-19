@@ -3,8 +3,7 @@ package utils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 
 public class ExcelUtil {
 
@@ -14,11 +13,9 @@ public class ExcelUtil {
 
     static {
         try {
-            // ✅ Initialize workbook once
             wb = new XSSFWorkbook();
             sheet = wb.createSheet("TestResults");
 
-            // ✅ CREATE HEADER ROW (BEST PRACTICE)
             Row header = sheet.createRow(rowNum++);
             header.createCell(0).setCellValue("Test Case");
             header.createCell(1).setCellValue("Result");
@@ -28,7 +25,28 @@ public class ExcelUtil {
         }
     }
 
-    // ✅ WRITE DATA (thread-safe simple use)
+    // ✅ READ DATA (NEW)
+    public static String getData(String sheetName, int row, int col) {
+
+        try {
+            FileInputStream fis = new FileInputStream("TestResults.xlsx");
+
+            Workbook wb = WorkbookFactory.create(fis);
+
+            Sheet sheet = wb.getSheet(sheetName);
+            String value = sheet.getRow(row).getCell(col).toString();
+
+            wb.close();
+            fis.close();
+            return value;
+
+        } catch (Exception e) {
+            System.out.println("Error reading Excel: " + e.getMessage());
+            return "";
+        }
+    }
+
+    // ✅ WRITE DATA
     public static synchronized void writeData(String testCase, String result) {
 
         Row row = sheet.createRow(rowNum++);
@@ -36,24 +54,21 @@ public class ExcelUtil {
         row.createCell(1).setCellValue(result);
     }
 
-    // ✅ SAVE FILE (SAFE + OVERWRITE)
+    // ✅ SAVE FILE
     public static void saveExcel() {
 
         try {
-
             File file = new File("target/TestResults.xlsx");
 
-            // ✅ Delete old file if exists
-            if (file.exists()) {
-                file.delete();
-            }
+            if (file.exists()) file.delete();
 
-            try (FileOutputStream fos = new FileOutputStream(file)) {
-                wb.write(fos);
-                wb.close();
-            }
+            FileOutputStream fos = new FileOutputStream(file);
+            wb.write(fos);
 
-            System.out.println("Excel file created successfully");
+            wb.close();
+            fos.close();
+
+            System.out.println("✅ Excel saved");
 
         } catch (Exception e) {
             System.out.println("Error writing Excel: " + e.getMessage());

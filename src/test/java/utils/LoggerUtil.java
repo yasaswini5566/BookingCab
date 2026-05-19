@@ -1,11 +1,16 @@
 package utils;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 public class LoggerUtil {
-
     public static Logger logger = Logger.getLogger("EaseMyTripLogger");
+    static {
+        // ✅ Ensure directory exists before log file creation
+        new java.io.File("target/logs").mkdirs();
 
+        org.apache.log4j.PropertyConfigurator.configure("src/test/resources/log4j.properties");
+    }
     public static void info(String message) {
         logger.info(message);
     }

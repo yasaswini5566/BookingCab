@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import utils.ExcelUtil;
+import utils.LoggerUtil;
 
 import java.time.Duration;
 import java.util.List;
@@ -18,7 +19,6 @@ public class CabPage {
     }
 
     public void bookCab() {
-
         String reqMon = "December 2026";
 
         // Click Cabs tab
@@ -39,12 +39,8 @@ public class CabPage {
         // Delhi selection (retry handling)
         By delhiOption = By.xpath("//div[normalize-space()='delhi']");
         for (int i = 0; i < 3; i++) {
-            try {
-                wait.until(ExpectedConditions.elementToBeClickable(delhiOption)).click();
-                break;
-            } catch (StaleElementReferenceException e) {
-                System.out.println("Retrying Delhi...");
-            }
+            wait.until(ExpectedConditions.elementToBeClickable(delhiOption)).click();
+            break;
         }
 
         // Enter TO city
@@ -55,12 +51,8 @@ public class CabPage {
         // Manali selection (retry handling)
         By manaliOption = By.xpath("//div[normalize-space()='manali']");
         for (int i = 0; i < 3; i++) {
-            try {
-                wait.until(ExpectedConditions.elementToBeClickable(manaliOption)).click();
-                break;
-            } catch (StaleElementReferenceException e) {
-                System.out.println("Retrying Manali...");
-            }
+            wait.until(ExpectedConditions.elementToBeClickable(manaliOption)).click();
+            break;
         }
 
         // Open date picker
@@ -86,7 +78,7 @@ public class CabPage {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//li[text()='30 Min.']"))).click();
-
+        utils.ScreenshotUtil.takeScreenshot(driver,"search");
         // Done
         wait.until(ExpectedConditions.elementToBeClickable(By.className("done_d"))).click();
 
@@ -99,23 +91,18 @@ public class CabPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        utils.ScreenshotUtil.takeScreenshot(driver,"Page load");
         // SUV checkbox
         By suvCheckbox = By.xpath("//*[@id=\"body\"]/app-root/div[3]/ng-component/div[2]/section[2]/div/div/div[1]/div/div[3]/div[2]/label[3]/div[1]/span[2]");
 
         WebElement suvElement = wait.until(ExpectedConditions.presenceOfElementLocated(suvCheckbox));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", suvElement);
-
         for (int i = 0; i < 3; i++) {
-            try {
-                wait.until(ExpectedConditions.elementToBeClickable(suvCheckbox)).click();
-                System.out.println("SUV filter clicked");
-                break;
-            } catch (Exception e) {
-                System.out.println("Retrying SUV...");
-            }
+            wait.until(ExpectedConditions.elementToBeClickable(suvCheckbox)).click();
+            LoggerUtil.info("✅ SUV filter applied");
+            break;
         }
-
+        utils.ScreenshotUtil.takeScreenshot(driver,"Checkbox click");
         // Wait after filter
         try {
             Thread.sleep(5000);
@@ -140,10 +127,12 @@ public class CabPage {
                 }
             }
         }
-
+        driver.findElement(By.linkText("5 More Options")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btn-bookk")));
+        utils.ScreenshotUtil.takeScreenshot(driver,"result cabs");
         // Print output safely
         if (minPrice == Integer.MAX_VALUE) {
-            System.out.println("No prices found!");
+            LoggerUtil.error("No prices found!");
             ExcelUtil.writeData("Cab Booking", "No price found");
         } else {
             System.out.println("Lowest SUV Cab Price: " + minPrice);

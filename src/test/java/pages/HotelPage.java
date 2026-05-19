@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
+import utils.LoggerUtil;
 
 import java.time.Duration;
 
@@ -16,24 +17,24 @@ public class HotelPage {
     }
 
     public void getAdultList() {
-
-        // ✅ Click Hotels tab
+        LoggerUtil.info("Test started: Cab Booking");
+        //  Click Hotels tab
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.className("hotelmenuico"))).click();
 
-        // ✅ Open guest selection
+        // Open guest selection
         WebElement guest = wait.until(
                 ExpectedConditions.elementToBeClickable(
                         By.xpath("//div[contains(@class,'roomGuests')]")));
         guest.click();
 
-        // ✅ Locate plus button and value
+        // Locate plus button and value
         WebElement plusBtn = driver.findElement(By.id("Adults_room_1_1_plus"));
         WebElement value   = driver.findElement(By.id("Adults_room_1_1"));
 
         int count = Integer.parseInt(value.getText());
 
-        // ✅ Keep clicking until max reached
+        // Keep clicking until max reached
         while (true) {
             try {
                 plusBtn.click();
@@ -51,7 +52,7 @@ public class HotelPage {
                 break;
             }
         }
-
-        System.out.println("✅ Max adults allowed in single room: " + count);
+        utils.ScreenshotUtil.takeScreenshot(driver,"Adults count");
+        System.out.println("Max adults allowed in single room: " + count);
     }
 }
