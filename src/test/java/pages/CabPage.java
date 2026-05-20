@@ -15,15 +15,16 @@ public class CabPage {
 
     public CabPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public void bookCab() {
+
         String reqMon = "December 2026";
 
         // Click Cabs tab
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Cabs"))).click();
-
+        LoggerUtil.info("Launching Cab Page");
         // Select Outstation
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//label[normalize-space()='Outstation']"))).click();
@@ -39,8 +40,12 @@ public class CabPage {
         // Delhi selection (retry handling)
         By delhiOption = By.xpath("//div[normalize-space()='delhi']");
         for (int i = 0; i < 3; i++) {
-            wait.until(ExpectedConditions.elementToBeClickable(delhiOption)).click();
-            break;
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(delhiOption)).click();
+                break;
+            } catch (StaleElementReferenceException e) {
+                System.out.println(" ");
+            }
         }
 
         // Enter TO city
@@ -51,10 +56,14 @@ public class CabPage {
         // Manali selection (retry handling)
         By manaliOption = By.xpath("//div[normalize-space()='manali']");
         for (int i = 0; i < 3; i++) {
-            wait.until(ExpectedConditions.elementToBeClickable(manaliOption)).click();
-            break;
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(manaliOption)).click();
+                break;
+            } catch (StaleElementReferenceException e) {
+                System.out.println(" ");
+            }
         }
-
+        LoggerUtil.info("Selected cities");
         // Open date picker
         wait.until(ExpectedConditions.elementToBeClickable(By.id("datepicker"))).click();
 
@@ -78,38 +87,28 @@ public class CabPage {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//li[text()='30 Min.']"))).click();
-        utils.ScreenshotUtil.takeScreenshot(driver,"search");
+
         // Done
         wait.until(ExpectedConditions.elementToBeClickable(By.className("done_d"))).click();
-
+        utils.ScreenshotUtil.takeScreenshot(driver,"search");
         // Search
         wait.until(ExpectedConditions.elementToBeClickable(By.className("srch-btn-c"))).click();
-
-        // Wait for results
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        utils.ScreenshotUtil.takeScreenshot(driver,"Page load");
         // SUV checkbox
         By suvCheckbox = By.xpath("//*[@id=\"body\"]/app-root/div[3]/ng-component/div[2]/section[2]/div/div/div[1]/div/div[3]/div[2]/label[3]/div[1]/span[2]");
-
+        utils.ScreenshotUtil.takeScreenshot(driver,"page load");
         WebElement suvElement = wait.until(ExpectedConditions.presenceOfElementLocated(suvCheckbox));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", suvElement);
-        for (int i = 0; i < 3; i++) {
-            wait.until(ExpectedConditions.elementToBeClickable(suvCheckbox)).click();
-            LoggerUtil.info("✅ SUV filter applied");
-            break;
-        }
-        utils.ScreenshotUtil.takeScreenshot(driver,"Checkbox click");
-        // Wait after filter
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
+        for (int i = 0; i < 3; i++) {
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(suvCheckbox)).click();
+                LoggerUtil.info("SUV filter clicked");
+                break;
+            } catch (Exception e) {
+                System.out.println(" ");
+            }
+        }
+        utils.ScreenshotUtil.takeScreenshot(driver,"checkbox");
         // Get prices
         List<WebElement> prices = driver.findElements(By.xpath("//*[contains(text(),'₹')]"));
 
@@ -132,7 +131,7 @@ public class CabPage {
         utils.ScreenshotUtil.takeScreenshot(driver,"result cabs");
         // Print output safely
         if (minPrice == Integer.MAX_VALUE) {
-            LoggerUtil.error("No prices found!");
+            LoggerUtil.error("No prices found");
             ExcelUtil.writeData("Cab Booking", "No price found");
         } else {
             System.out.println("Lowest SUV Cab Price: " + minPrice);

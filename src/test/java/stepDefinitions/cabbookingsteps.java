@@ -29,7 +29,7 @@ public class cabbookingsteps {
     @And("the user chooses pickup time {string} on {string}")
     public void select_date_time(String time, String date) {
 
-        // ✅ Already handled in CabPage
+        //Already handled in CabPage
         System.out.println("Date: " + date + " Time: " + time);
     }
 
@@ -40,7 +40,7 @@ public class cabbookingsteps {
     @Then("the system should display the lowest available charges for the trip")
     public void lowest_price() {
 
-        // ✅ Actual execution happens here
+        //Actual execution happens here
         cab.bookCab();
     }
 }

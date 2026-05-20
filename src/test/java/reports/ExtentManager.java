@@ -25,7 +25,7 @@ public class ExtentManager {
             extent = new ExtentReports();
             extent.attachReporter(spark);
 
-            extent.setSystemInfo("Project", "EaseMyTrip Automation");
+            extent.setSystemInfo("Project", "BookingCab Automation");
             extent.setSystemInfo("Tester", "Automation User");
             extent.setSystemInfo("Environment", "QA");
         }

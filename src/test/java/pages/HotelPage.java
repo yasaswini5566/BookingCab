@@ -13,15 +13,10 @@ public class HotelPage {
 
     public HotelPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 
     public void getAdultList() {
-        LoggerUtil.info("Test started: Cab Booking");
-        //  Click Hotels tab
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.className("hotelmenuico"))).click();
-
         // Open guest selection
         WebElement guest = wait.until(
                 ExpectedConditions.elementToBeClickable(
@@ -38,8 +33,6 @@ public class HotelPage {
         while (true) {
             try {
                 plusBtn.click();
-                Thread.sleep(500);
-
                 int newVal = Integer.parseInt(value.getText());
 
                 if (newVal == count) {
@@ -52,6 +45,7 @@ public class HotelPage {
                 break;
             }
         }
+        LoggerUtil.info("Max Adult Count retrieved");
         utils.ScreenshotUtil.takeScreenshot(driver,"Adults count");
         System.out.println("Max adults allowed in single room: " + count);
     }

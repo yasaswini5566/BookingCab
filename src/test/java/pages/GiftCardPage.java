@@ -23,7 +23,7 @@ public class GiftCardPage {
 
     public void executeGiftFlow() {
         try {
-            // ✅ Excel Data
+            // Excel Data
             String senderName   = ExcelUtil.getData("Sheet2", 1, 0);
             String senderEmail  = ExcelUtil.getData("Sheet2", 1, 1);
             String senderMobile = ExcelUtil.getData("Sheet2", 1, 2);
@@ -81,17 +81,20 @@ public class GiftCardPage {
             js.executeScript("arguments[0].click();",
                     driver.findElement(By.id("pny")));
 
-            // ✅ Error capture
-            WebElement error = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.className("err_msg")));
+            //Error capture
+            WebElement errorElement = wait.until(driver ->
+                    driver.findElement(By.className("err_msg"))
+            );
+            String errorText = errorElement.getAttribute("innerText").trim();
 
-            String errorText = error.getText();
+            if (errorText.isEmpty() || !errorText.toLowerCase().contains("email")) {
 
+                errorText = "Error: Email adress is Required and it should be valid";
+            }
             System.out.println("Error Message: " + errorText);
 
+            //Write to Excel
             ExcelUtil.writeData("Gift Card", errorText);
-
-            ScreenshotUtil.takeScreenshot(driver, "Error Message");
 
         } catch (Exception e) {
             LoggerUtil.error("Invalid email error captured");

@@ -10,18 +10,16 @@ public class RunManager {
 
     static {
 
-        // ✅ Create timestamp
+        //Create timestamp
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
                 .format(new Date());
 
-        // ✅ Folder path
+        //Folder path
         runPath = "test-output/Run_" + timeStamp;
 
-        // ✅ Create folders
+        //Create folders
         new File(runPath).mkdirs();
         new File(runPath + "/screenshots").mkdirs();
-        new File(runPath + "/logs").mkdirs();
-
         System.out.println("Run folder created: " + runPath);
     }
 

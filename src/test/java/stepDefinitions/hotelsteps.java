@@ -32,26 +32,26 @@ public class hotelsteps {
             popup.click();
 
         } catch (Exception e) {
-            System.out.println("✅ No popup");
+            System.out.println("No popup");
         }
     }
 
     @And("user opens room and guest dropdown")
     public void open_guest_dropdown() {
 
-        // ✅ handled inside page method (it already clicks)
-        System.out.println("✅ Opening guest dropdown");
+        //handled inside page method (it already clicks)
+        System.out.println("Opening guest dropdown");
     }
 
     @And("user increases adult count to maximum")
     public void increase_adults() {
 
-        hotel.getAdultList();   // ✅ main logic here
+        hotel.getAdultList();   //main logic here
     }
 
     @Then("system should display final adult count")
     public void verify_count() {
 
-        System.out.println("✅ Hotel adult count displayed successfully");
+        System.out.println("Hotel adult count displayed successfully");
     }
 }

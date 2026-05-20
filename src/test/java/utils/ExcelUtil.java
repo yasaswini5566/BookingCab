@@ -25,20 +25,14 @@ public class ExcelUtil {
         }
     }
 
-    // ✅ READ DATA (NEW)
+    //READ DATA
     public static String getData(String sheetName, int row, int col) {
 
-        try {
-            FileInputStream fis = new FileInputStream("TestResults.xlsx");
-
-            Workbook wb = WorkbookFactory.create(fis);
+        try (FileInputStream fis = new FileInputStream("testdata.xlsx");
+             Workbook wb = WorkbookFactory.create(fis)) {
 
             Sheet sheet = wb.getSheet(sheetName);
-            String value = sheet.getRow(row).getCell(col).toString();
-
-            wb.close();
-            fis.close();
-            return value;
+            return sheet.getRow(row).getCell(col).toString();
 
         } catch (Exception e) {
             System.out.println("Error reading Excel: " + e.getMessage());
@@ -46,7 +40,7 @@ public class ExcelUtil {
         }
     }
 
-    // ✅ WRITE DATA
+    //WRITE DATA
     public static synchronized void writeData(String testCase, String result) {
 
         Row row = sheet.createRow(rowNum++);
@@ -54,24 +48,36 @@ public class ExcelUtil {
         row.createCell(1).setCellValue(result);
     }
 
-    // ✅ SAVE FILE
     public static void saveExcel() {
 
         try {
-            File file = new File("target/TestResults.xlsx");
 
-            if (file.exists()) file.delete();
+            String runPath = RunManager.getRunPath() + "/TestResults.xlsx";
+            String targetPath = "target/TestResults.xlsx";
+            //Save inside Run folder
+            try (FileOutputStream fos = new FileOutputStream(runPath)) {
+                wb.write(fos);
+            }
 
-            FileOutputStream fos = new FileOutputStream(file);
-            wb.write(fos);
-
-            wb.close();
-            fos.close();
-
-            System.out.println("✅ Excel saved");
-
+            //Copy to target
+            copyFile(runPath, targetPath);
         } catch (Exception e) {
             System.out.println("Error writing Excel: " + e.getMessage());
         }
     }
-}
+
+    //helper method
+    private static void copyFile(String source, String dest) throws IOException {
+
+        File srcFile = new File(source);
+        File destFile = new File(dest);
+
+        destFile.getParentFile().mkdirs();
+
+        java.nio.file.Files.copy(
+                srcFile.toPath(),
+                destFile.toPath(),
+                java.nio.file.StandardCopyOption.REPLACE_EXISTING
+        );
+    }
+    }
