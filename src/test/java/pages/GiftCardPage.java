@@ -92,7 +92,7 @@ public class GiftCardPage {
                 errorText = "Error: Email adress is Required and it should be valid";
             }
             System.out.println("Error Message: " + errorText);
-
+            utils.ScreenshotUtil.takeScreenshot(driver,"Error message");
             //Write to Excel
             ExcelUtil.writeData("Gift Card", errorText);
 
