@@ -8,14 +8,27 @@
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>17</maven.compiler.source>
+      <maven.compiler.target>17</maven.compiler.target>
+      <java.version>24</java.version>
+      <lombok.version>1.18.38</lombok.version>
+      <cucumber.execution.parallel.enabled>true</cucumber.execution.parallel.enabled>
+      <cucumber.execution.parallel.config.strategy>fixed</cucumber.execution.parallel.config.strategy>
+      <cucumber.execution.parallel.config.fixed.parallelism>3</cucumber.execution.parallel.config.fixed.parallelism>
   </properties>
-  <dependencies>
+    <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     <!--  Selenium  -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -33,11 +46,28 @@
       <artifactId>cucumber-java</artifactId>
       <version>7.14.0</version>
     </dependency>
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit-platform-engine</artifactId>
+        <version>7.14.0</version>
+      </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-testng</artifactId>
       <version>7.14.0</version>
     </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit</artifactId>
+        <version>7.34.3</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>tech.grasshopper</groupId>
+        <artifactId>extentreports-cucumber7-adapter</artifactId>
+        <version>1.12.0</version>
+      </dependency>
     <!--  TestNG  -->
     <dependency>
       <groupId>org.testng</groupId>
@@ -49,12 +79,6 @@
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>5.1.1</version>
-    </dependency>
-    <!--  Allure  -->
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-cucumber7-jvm</artifactId>
-      <version>2.24.0</version>
     </dependency>
     <!--  Log4j  -->
     <dependency>
@@ -75,6 +99,7 @@
     </dependency>
   </dependencies>
   <build>
+
     <plugins>
       <!--  Maven Compiler  -->
       <plugin>
