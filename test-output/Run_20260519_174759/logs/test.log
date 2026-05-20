@@ -1,4 +1,0 @@
-2026-05-19 17:48:41,663 [TestNG-tests-1] INFO  EaseMyTripLogger - ✅ SUV filter applied
-2026-05-19 17:48:49,653 [TestNG-tests-1] INFO  EaseMyTripLogger - Filling gift card form
-2026-05-19 17:49:13,648 [TestNG-tests-1] ERROR EaseMyTripLogger - Invalid email error captured
-2026-05-19 17:49:28,839 [TestNG-tests-1] INFO  EaseMyTripLogger - Test started: Cab Booking
