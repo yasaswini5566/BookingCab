@@ -1,13 +1,15 @@
-<suite name="Suite" parallel="tests" thread-count="2">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-    <test name="Chrome Test">
+<suite name="CucumberSuite" parallel="tests" thread-count="2">
+
+    <test name="ChromeTest">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="runner.TestRunner"/>
         </classes>
     </test>
 
-    <test name="Edge Test">
+    <test name="EdgeTest">
         <parameter name="browser" value="edge"/>
         <classes>
             <class name="runner.TestRunner"/>

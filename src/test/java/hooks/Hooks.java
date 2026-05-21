@@ -42,10 +42,7 @@ public class Hooks {
     public static void tearDownAll() {
 
         ExcelUtil.saveExcel();
-
-        if (driver != null) {
-            driver.quit();   // ✅ close only once
-        }
+            DriverFactory.quitDriver();
 
         System.out.println("Browser closed AFTER ALL TEST CASES");
     }
