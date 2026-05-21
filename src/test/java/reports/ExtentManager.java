@@ -15,13 +15,6 @@ public class ExtentManager {
 
             ExtentSparkReporter spark =
                     new ExtentSparkReporter("target/extent-reports/ExtentReport.html");
-
-            try {
-                spark.loadXMLConfig("extent-config.xml");
-            } catch (IOException e) {
-                System.out.println("Failed to load extent config: " + e.getMessage());
-            }
-
             extent = new ExtentReports();
             extent.attachReporter(spark);
 

@@ -8,7 +8,7 @@ public class LoggerUtil {
     public static Logger logger = Logger.getLogger("EaseMyTripLogger");
 
     static {
-        PropertyConfigurator.configure("src/test/resources/log4j.properties");
+        PropertyConfigurator.configure("src/test/resources/log4j2.xml");
     }
 
     public static void info(String message) {
