@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import factory.BaseTest;
 import io.cucumber.java.en.*;
 import pages.HotelPage;
 import org.openqa.selenium.*;
@@ -9,7 +10,7 @@ import java.time.Duration;
 
 public class hotelsteps {
 
-    WebDriver driver = DriverFactory.getDriver();
+    WebDriver driver = BaseTest.getDriver();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     HotelPage hotel;

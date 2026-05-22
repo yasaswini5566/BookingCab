@@ -1,12 +1,13 @@
 package stepDefinitions;
 
+import factory.BaseTest;
 import io.cucumber.java.en.*;
 import pages.CabPage;
 import org.openqa.selenium.WebDriver;
 
 public class cabbookingsteps {
 
-    WebDriver driver = DriverFactory.getDriver();
+    WebDriver driver = BaseTest.getDriver();
 
     CabPage cab;
 

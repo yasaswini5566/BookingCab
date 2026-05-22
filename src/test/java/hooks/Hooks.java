@@ -1,48 +1,40 @@
 package hooks;
 
+import factory.BaseTest;
 import io.cucumber.java.*;
 import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;
-import utils.ExcelUtil;
 import utils.RunManager;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
 
 public class Hooks {
 
-    private static WebDriver driver;
+    private static final Logger logger = LogManager.getLogger(Hooks.class);
 
-    // ✅ Runs BEFORE EACH SCENARIO but opens browser ONLY ONCE
     @Before
-    public void setUp() {
-            System.setProperty("logfile.name",
-                    RunManager.getRunPath() + "/logs/test.log");
-            System.out.println("Log file path set");
-        if (DriverFactory.getDriver() == null) {
-
-            String browser = ConfigReader.getProperty("browser");
-
-            driver = DriverFactory.initDriver(browser);
-            driver.get(ConfigReader.getProperty("url"));
-
-            System.out.println("Browser launched ONLY ONCE");
-        } else {
-            driver = DriverFactory.getDriver();
-        }
+    public void setUp() throws IOException {
+        BaseTest.setUp();
     }
 
-    // ✅ DO NOT CLOSE BROWSER HERE
     @After
-    public void afterScenario() {
-
-        System.out.println("Scenario completed");
+    public void tearDown() {
+        BaseTest.tearDown();
     }
 
-    // ✅ CLOSE ONLY AFTER ALL 3 TESTCASES
-    @AfterAll
-    public static void tearDownAll() {
+    @After
+    public void tearDown(Scenario scenario) {
 
-        ExcelUtil.saveExcel();
-            DriverFactory.quitDriver();
+        if (scenario.isFailed()) {
+            logger.error("Scenario FAILED: " + scenario.getName());
+        } else {
+            logger.info("Scenario PASSED: " + scenario.getName());
+        }
 
-        System.out.println("Browser closed AFTER ALL TEST CASES");
+        BaseTest.quitDriver();
+        logger.info("Browser closed");
     }
 }
