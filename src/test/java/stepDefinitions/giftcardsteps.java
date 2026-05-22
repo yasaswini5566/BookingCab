@@ -1,13 +1,13 @@
 package stepDefinitions;
 
+import factory.BaseTest;
 import io.cucumber.java.en.*;
 import pages.GiftCardPage;
-import factory.DriverFactory;
 import org.openqa.selenium.WebDriver;
 
 public class giftcardsteps {
 
-    WebDriver driver = DriverFactory.getDriver();
+    WebDriver driver = BaseTest.getDriver();
 
     GiftCardPage gift;
 

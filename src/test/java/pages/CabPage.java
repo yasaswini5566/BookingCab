@@ -1,15 +1,16 @@
 package pages;
 
+import hooks.Hooks;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import utils.ExcelUtil;
-import utils.LoggerUtil;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.time.Duration;
 import java.util.List;
 
 public class CabPage {
-
+    private static final Logger logger = LogManager.getLogger(Hooks.class);
     WebDriver driver;
     WebDriverWait wait;
 
@@ -21,14 +22,12 @@ public class CabPage {
     public void bookCab() {
 
         String reqMon = "December 2026";
-
         // Click Cabs tab
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Cabs"))).click();
-        LoggerUtil.info("Launching Cab Page");
+        logger.info("Launching Cab Page");
         // Select Outstation
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//label[normalize-space()='Outstation']"))).click();
-
         // Click source field
         wait.until(ExpectedConditions.elementToBeClickable(By.id("sourceName"))).click();
 
@@ -36,7 +35,6 @@ public class CabPage {
         WebElement fromCity = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.id("a_FromSector_show")));
         fromCity.sendKeys("Delhi");
-
         // Delhi selection (retry handling)
         By delhiOption = By.xpath("//div[normalize-space()='delhi']");
         for (int i = 0; i < 3; i++) {
@@ -47,12 +45,10 @@ public class CabPage {
                 System.out.println(" ");
             }
         }
-
         // Enter TO city
         WebElement toCity = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.id("a_ToSector_show")));
         toCity.sendKeys("Manali");
-
         // Manali selection (retry handling)
         By manaliOption = By.xpath("//div[normalize-space()='manali']");
         for (int i = 0; i < 3; i++) {
@@ -63,10 +59,9 @@ public class CabPage {
                 System.out.println(" ");
             }
         }
-        LoggerUtil.info("Selected cities");
+        logger.info("Selected cities");
         // Open date picker
         wait.until(ExpectedConditions.elementToBeClickable(By.id("datepicker"))).click();
-
         // Select month + date
         while (true) {
             WebElement month = wait.until(
@@ -80,7 +75,6 @@ public class CabPage {
                 break;
             }
         }
-
         // Select time
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//li[text()='6 Hr.']"))).click();
@@ -102,7 +96,7 @@ public class CabPage {
         for (int i = 0; i < 3; i++) {
             try {
                 wait.until(ExpectedConditions.elementToBeClickable(suvCheckbox)).click();
-                LoggerUtil.info("SUV filter clicked");
+                logger.info("SUV filter clicked");
                 break;
             } catch (Exception e) {
                 System.out.println(" ");
@@ -131,12 +125,25 @@ public class CabPage {
         utils.ScreenshotUtil.takeScreenshot(driver,"result cabs");
         // Print output safely
         if (minPrice == Integer.MAX_VALUE) {
-            LoggerUtil.error("No prices found");
-            ExcelUtil.writeData("Cab Booking", "No price found");
+            logger.error("No prices found");
         } else {
             System.out.println("Lowest SUV Cab Price: " + minPrice);
+            if (minPrice != Integer.MAX_VALUE) {
+                ExcelUtil.writeResult(
+                        "Cab Booking",
+                        "Price should be displayed",
+                        "Lowest Price: " + minPrice,
+                        "PASS"
+                );
 
-            ExcelUtil.writeData("Cab Booking", "Lowest Price: " + minPrice);
+            } else {
+                ExcelUtil.writeResult(
+                        "Cab Booking",
+                        "Price should be displayed",
+                        "No price found",
+                        "FAIL"
+                );
+            }
         }
     }
 }

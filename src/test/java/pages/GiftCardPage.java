@@ -1,16 +1,16 @@
 package pages;
 
+import hooks.Hooks;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import utils.ExcelUtil;
-import utils.LoggerUtil;
-import utils.ScreenshotUtil;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.time.Duration;
 
 public class GiftCardPage {
-
+    private static final Logger logger = LogManager.getLogger(Hooks.class);
     WebDriver driver;
     WebDriverWait wait;
     JavascriptExecutor js;
@@ -32,7 +32,7 @@ public class GiftCardPage {
             String receiverMobile = ExcelUtil.getData("Sheet2", 1, 5);
             String amountValue = ExcelUtil.getData("Sheet2", 1, 6);
             String quantityVal = ExcelUtil.getData("Sheet2", 1, 7).split("\\.")[0];
-            LoggerUtil.info("Filling gift card form");
+            logger.info("Filling gift card form");
             driver.get("https://www.easemytrip.com/");
             // Hover menu
             WebElement moreMenu = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -94,10 +94,23 @@ public class GiftCardPage {
             System.out.println("Error Message: " + errorText);
             utils.ScreenshotUtil.takeScreenshot(driver,"Error message");
             //Write to Excel
-            ExcelUtil.writeData("Gift Card", errorText);
-
+            if (errorText.toLowerCase().contains("email")) {
+                ExcelUtil.writeResult(
+                        "Gift Card Validation",
+                        "Valid email error should appear",
+                        errorText,
+                        "PASS"
+                );
+            } else {
+                ExcelUtil.writeResult(
+                        "Gift Card Validation",
+                        "Valid email error should appear",
+                        errorText,
+                        "FAIL"
+                );
+            }
         } catch (Exception e) {
-            LoggerUtil.error("Invalid email error captured");
+            logger.error("Invalid email error captured");
         }
     }
 }

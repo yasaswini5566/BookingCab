@@ -2,12 +2,14 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
-import utils.LoggerUtil;
-
+import utils.ExcelUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import hooks.Hooks;
 import java.time.Duration;
 
 public class HotelPage {
-
+    private static final Logger logger = LogManager.getLogger(Hooks.class);
     WebDriver driver;
     WebDriverWait wait;
 
@@ -45,8 +47,14 @@ public class HotelPage {
                 break;
             }
         }
-        LoggerUtil.info("Max Adult Count retrieved");
+        logger.info("Max Adult Count retrieved");
         utils.ScreenshotUtil.takeScreenshot(driver,"Adults count");
         System.out.println("Max adults allowed in single room: " + count);
+        ExcelUtil.writeResult(
+                "Hotel Adult Count",
+                "Should reach maximum adults",
+                "Max adults: " + count,
+                "PASS"
+        );
     }
 }

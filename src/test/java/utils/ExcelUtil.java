@@ -10,6 +10,7 @@ public class ExcelUtil {
     private static Workbook wb;
     private static Sheet sheet;
     private static int rowNum = 0;
+    private static final String RESULT_PATH = "test-output/TestResults.xlsx";
 
     static {
         try {
@@ -39,45 +40,67 @@ public class ExcelUtil {
             return "";
         }
     }
-
-    //WRITE DATA
-    public static synchronized void writeData(String testCase, String result) {
-
-        Row row = sheet.createRow(rowNum++);
-        row.createCell(0).setCellValue(testCase);
-        row.createCell(1).setCellValue(result);
-    }
-
-    public static void saveExcel() {
+    public static void writeResult(String testName,
+                                   String expectedResult,
+                                   String actualResult,
+                                   String status) {
 
         try {
+            Workbook workbook;
+            Sheet sheet;
+            File file = new File(RESULT_PATH);
 
-            String runPath = RunManager.getRunPath() + "/TestResults.xlsx";
-            String targetPath = "target/TestResults.xlsx";
-            //Save inside Run folder
-            try (FileOutputStream fos = new FileOutputStream(runPath)) {
-                wb.write(fos);
+            if (file.exists()) {
+                FileInputStream fis = new FileInputStream(file);
+                workbook = WorkbookFactory.create(fis);
+                sheet = workbook.getSheet("Results");
+            } else {
+                workbook = new XSSFWorkbook();
+                sheet = workbook.createSheet("Results");
+
+                Row header = sheet.createRow(0);
+                header.createCell(0).setCellValue("TestCaseName");
+                header.createCell(1).setCellValue("Expected Result");
+                header.createCell(2).setCellValue("Actual Result");
+                header.createCell(3).setCellValue("Status");
             }
 
-            //Copy to target
-            copyFile(runPath, targetPath);
+            CellStyle passStyle = workbook.createCellStyle();
+            passStyle.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
+            passStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle failStyle = workbook.createCellStyle();
+            failStyle.setFillForegroundColor(IndexedColors.ROSE.getIndex());
+            failStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            int rowCount = sheet.getLastRowNum();
+            Row row = sheet.createRow(rowCount + 1);
+
+            row.createCell(0).setCellValue(testName);
+            row.createCell(1).setCellValue(expectedResult);
+            row.createCell(2).setCellValue(actualResult);
+
+            Cell statusCell = row.createCell(3);
+            statusCell.setCellValue(status);
+
+            if (status.equalsIgnoreCase("PASS")) {
+                statusCell.setCellStyle(passStyle);
+            } else if (status.equalsIgnoreCase("FAIL")) {
+                statusCell.setCellStyle(failStyle);
+            }
+
+            sheet.autoSizeColumn(0);
+            sheet.autoSizeColumn(1);
+            sheet.autoSizeColumn(2);
+            sheet.autoSizeColumn(3);
+
+            FileOutputStream fos = new FileOutputStream(RESULT_PATH);
+            workbook.write(fos);
+            fos.close();
+            workbook.close();
+
         } catch (Exception e) {
-            System.out.println("Error writing Excel: " + e.getMessage());
+            System.out.println("Failed to write results: " + e.getMessage());
         }
-    }
-
-    //helper method
-    private static void copyFile(String source, String dest) throws IOException {
-
-        File srcFile = new File(source);
-        File destFile = new File(dest);
-
-        destFile.getParentFile().mkdirs();
-
-        java.nio.file.Files.copy(
-                srcFile.toPath(),
-                destFile.toPath(),
-                java.nio.file.StandardCopyOption.REPLACE_EXISTING
-        );
     }
     }
