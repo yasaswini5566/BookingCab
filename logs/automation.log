@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 10:34:26.072 [TestNG-PoolService-3] INFO  - Browser initialized: chrome
 10:34:26.105 [TestNG-PoolService-2] INFO  - Browser initialized: chrome
 10:34:26.241 [TestNG-PoolService-1] INFO  - Browser initialized: chrome
@@ -147,3 +148,284 @@
 10:35:04.646 [TestNG-PoolService-1] INFO  - Browser closed
 10:35:04.648 [TestNG-PoolService-1] INFO  - Scenario PASSED: Book one way outstation cab
 10:35:04.648 [TestNG-PoolService-1] INFO  - Browser closed
+=======
+10:05:39.865 [TestNG-PoolService-2] INFO  - Browser initialized: edge
+10:05:39.856 [TestNG-PoolService-1] INFO  - Browser initialized: edge
+10:05:40.566 [TestNG-PoolService-3] INFO  - Browser initialized: edge
+10:05:41.347 [TestNG-PoolService-1] INFO  - Navigated to application URL
+10:05:41.445 [TestNG-PoolService-2] INFO  - Navigated to application URL
+10:05:41.550 [TestNG-PoolService-3] INFO  - Navigated to application URL
+10:05:43.630 [TestNG-PoolService-2] TRACE - Loading type system org.apache.poi.schemas.ooxml.system.ooxml
+10:05:43.652 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+10:05:43.665 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLLANG
+10:05:43.676 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+10:05:43.676 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+10:05:43.689 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+10:05:43.733 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+10:05:43.737 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+10:05:43.749 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+10:05:43.759 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLLANG
+10:05:43.761 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLLANG
+10:05:43.764 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+10:05:43.766 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+10:05:43.772 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.poi.schemas.ooxml.system.ooxml
+10:05:43.980 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.poi.schemas.ooxml.system.ooxml
+10:05:43.985 [TestNG-PoolService-2] TRACE - Resolving type for handle ctworkbook83c3type
+10:05:45.346 [TestNG-PoolService-2] TRACE - Resolving type for handle ctworkbookpr03a5type
+10:05:45.427 [TestNG-PoolService-2] TRACE - Resolving type for handle ctbookviewsb864type
+10:05:45.444 [TestNG-PoolService-2] TRACE - Resolving type for handle ctbookviewf677type
+10:05:45.500 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheets49fdtype
+10:05:45.534 [TestNG-PoolService-2] TRACE - Resolving type for handle propertiesee84doctype
+10:05:45.554 [TestNG-PoolService-2] TRACE - Resolving type for handle ctproperties3f10type
+10:05:45.611 [TestNG-PoolService-2] TRACE - Resolving type for handle properties288cdoctype
+10:05:45.629 [TestNG-PoolService-2] TRACE - Resolving type for handle ctproperties2c18type
+10:05:45.682 [TestNG-PoolService-2] TRACE - Resolving type for handle sstf81fdoctype
+10:05:45.696 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsst44f3type
+10:05:45.744 [TestNG-PoolService-2] TRACE - Resolving type for handle stylesheet5d8bdoctype
+10:05:45.771 [TestNG-PoolService-2] TRACE - Resolving type for handle ctstylesheet4257type
+10:05:45.831 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfont14d8type
+10:05:45.853 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontsizeb3b9type
+10:05:45.884 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcolord2c2type
+10:05:45.915 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontname2dc3type
+10:05:45.935 [TestNG-PoolService-2] TRACE - Resolving type for handle stxstringf179type
+10:05:45.948 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontfamily685ctype
+10:05:45.984 [TestNG-PoolService-2] TRACE - Resolving type for handle stfontfamily9c6ctype
+10:05:46.010 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontschemebf5dtype
+10:05:46.019 [TestNG-PoolService-2] TRACE - Resolving type for handle stfontschemef36dtype
+10:05:46.036 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfill550ctype
+10:05:46.059 [TestNG-PoolService-2] TRACE - Resolving type for handle ctpatternfill7452type
+10:05:46.082 [TestNG-PoolService-2] TRACE - Resolving type for handle stpatterntype7939type
+10:05:46.119 [TestNG-PoolService-2] TRACE - Resolving type for handle ctborderf935type
+10:05:46.143 [TestNG-PoolService-2] TRACE - Resolving type for handle ctborderpre497type
+10:05:46.190 [TestNG-PoolService-2] TRACE - Resolving type for handle ctxf97f7type
+10:05:46.217 [TestNG-PoolService-2] TRACE - Resolving type for handle stnumfmtid76fbtype
+10:05:46.245 [TestNG-PoolService-2] TRACE - Resolving type for handle stfontid9d63type
+10:05:46.265 [TestNG-PoolService-2] TRACE - Resolving type for handle stfillida097type
+10:05:46.280 [TestNG-PoolService-2] TRACE - Resolving type for handle stborderid1a80type
+10:05:46.297 [TestNG-PoolService-2] TRACE - Resolving type for handle stcellstylexfid70c7type
+10:05:46.365 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheet4dbetype
+10:05:46.445 [TestNG-PoolService-2] TRACE - Resolving type for handle ctworksheet530dtype
+10:05:46.499 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetformatprdef7type
+10:05:46.542 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetviewsb918type
+10:05:46.568 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetview0f43type
+10:05:46.584 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetdimensiond310type
+10:05:46.591 [TestNG-PoolService-2] TRACE - Resolving type for handle stref90a2type
+10:05:46.594 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetdata8408type
+10:05:46.600 [TestNG-PoolService-2] TRACE - Resolving type for handle ctpagemargins5455type
+10:05:46.624 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcols627ctype
+10:05:46.634 [TestNG-PoolService-2] TRACE - Resolving type for handle strelationshipid1e94type
+10:05:46.645 [TestNG-PoolService-2] TRACE - Resolving type for handle ctrowdd39type
+10:05:46.665 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcell842btype
+10:05:46.703 [TestNG-PoolService-2] TRACE - Resolving type for handle stcellrefe4e0type
+10:05:46.714 [TestNG-PoolService-2] TRACE - Resolving type for handle ctrsta472type
+10:05:46.725 [TestNG-PoolService-2] TRACE - Resolving type for handle stcelltypebf95type
+10:05:47.157 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:47.159 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:47.266 [TestNG-PoolService-2] TRACE - Resolving type for handle themefd26doctype
+10:05:47.378 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfonts6623type
+10:05:47.386 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfills2c6ftype
+10:05:47.396 [TestNG-PoolService-2] TRACE - Resolving type for handle ctborders0d66type
+10:05:47.404 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcellxfs1322type
+10:05:47.416 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcellstylexfsa81ftype
+10:05:47.427 [TestNG-PoolService-2] TRACE - Resolving type for handle ctdxfsb26atype
+10:05:47.434 [TestNG-PoolService-2] TRACE - Resolving type for handle cttablestyles872ftype
+10:05:47.498 [TestNG-PoolService-2] TRACE - Resolving type for handle workbookec17doctype
+10:05:47.514 [TestNG-PoolService-2] TRACE - Resolving type for handle worksheetf539doctype
+10:05:47.568 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcola95ftype
+10:05:47.635 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:47.643 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:47.749 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:47.755 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:47.882 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:47.885 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:47.989 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:47.999 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:48.099 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:48.101 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:48.183 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:48.185 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:49.201 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:05:49.301 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:05:49.658 [TestNG-PoolService-2] INFO  - Filling gift card form
+10:06:17.326 [TestNG-PoolService-3] INFO  - Max Adult Count retrieved
+10:06:18.383 [TestNG-PoolService-3] TRACE - Resolving type for handle ctnumfmtsb58btype
+10:06:18.418 [TestNG-PoolService-3] DEBUG - Save core properties part
+10:06:18.418 [TestNG-PoolService-3] DEBUG - Save content types part
+10:06:18.454 [TestNG-PoolService-1] INFO  - Launching Cab Page
+10:06:18.818 [TestNG-PoolService-3] DEBUG - Save package relationships
+10:06:18.853 [TestNG-PoolService-3] DEBUG - Save part 'docProps/app.xml'
+10:06:18.855 [TestNG-PoolService-3] DEBUG - Save part 'docProps/core.xml'
+10:06:18.865 [TestNG-PoolService-3] DEBUG - Save part 'xl/sharedStrings.xml'
+10:06:18.865 [TestNG-PoolService-3] DEBUG - Save part 'xl/styles.xml'
+10:06:18.865 [TestNG-PoolService-3] DEBUG - Save part 'xl/workbook.xml'
+10:06:18.870 [TestNG-PoolService-3] DEBUG - Save part 'xl/worksheets/sheet1.xml'
+10:06:18.881 [TestNG-PoolService-3] DEBUG - Save content types part
+10:06:18.883 [TestNG-PoolService-3] DEBUG - Save package relationships
+10:06:18.885 [TestNG-PoolService-3] DEBUG - Save part 'docProps/app.xml'
+10:06:18.887 [TestNG-PoolService-3] DEBUG - Save part 'docProps/core.xml'
+10:06:18.890 [TestNG-PoolService-3] DEBUG - Save part 'xl/sharedStrings.xml'
+10:06:18.890 [TestNG-PoolService-3] DEBUG - Save part 'xl/styles.xml'
+10:06:18.891 [TestNG-PoolService-3] DEBUG - Save part 'xl/workbook.xml'
+10:06:18.893 [TestNG-PoolService-3] DEBUG - Save part 'xl/worksheets/sheet1.xml'
+10:06:31.114 [TestNG-PoolService-3] INFO  - Browser closed
+10:06:31.154 [TestNG-PoolService-3] INFO  - Scenario PASSED: Maximum adult can accommodate in a room
+10:06:31.154 [TestNG-PoolService-3] INFO  - Browser closed
+10:06:32.811 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:06:32.815 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:06:32.913 [TestNG-PoolService-2] DEBUG - Save content types part
+10:06:32.917 [TestNG-PoolService-2] DEBUG - Save package relationships
+10:06:32.919 [TestNG-PoolService-2] DEBUG - Save part 'docProps/app.xml'
+10:06:32.921 [TestNG-PoolService-2] DEBUG - Save part 'docProps/core.xml'
+10:06:32.925 [TestNG-PoolService-2] DEBUG - Save part 'xl/sharedStrings.xml'
+10:06:32.926 [TestNG-PoolService-2] DEBUG - Save part 'xl/styles.xml'
+10:06:32.928 [TestNG-PoolService-2] DEBUG - Save part 'xl/workbook.xml'
+10:06:32.933 [TestNG-PoolService-2] DEBUG - Save part 'xl/worksheets/sheet1.xml'
+10:06:40.747 [TestNG-PoolService-1] INFO  - Browser closed
+10:06:40.749 [TestNG-PoolService-1] ERROR - Scenario FAILED: Book one way outstation cab
+10:06:40.749 [TestNG-PoolService-1] INFO  - Browser closed
+10:06:41.324 [TestNG-PoolService-2] INFO  - Browser closed
+10:06:41.326 [TestNG-PoolService-2] INFO  - Scenario PASSED: Fill gift card form with invalid email and validate error
+10:06:41.326 [TestNG-PoolService-2] INFO  - Browser closed
+10:07:18.077 [TestNG-PoolService-1] INFO  - Browser initialized: chrome
+10:07:18.134 [TestNG-PoolService-3] INFO  - Browser initialized: chrome
+10:07:18.157 [TestNG-PoolService-2] INFO  - Browser initialized: chrome
+10:07:25.302 [TestNG-PoolService-3] INFO  - Navigated to application URL
+10:07:25.346 [TestNG-PoolService-2] INFO  - Navigated to application URL
+10:07:25.559 [TestNG-PoolService-1] INFO  - Navigated to application URL
+10:07:29.692 [TestNG-PoolService-2] TRACE - Loading type system org.apache.poi.schemas.ooxml.system.ooxml
+10:07:29.724 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+10:07:29.733 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLLANG
+10:07:29.744 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+10:07:29.748 [TestNG-PoolService-2] TRACE - Loading type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+10:07:29.751 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+10:07:29.901 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLTOOLS
+10:07:29.908 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+10:07:29.963 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLSCHEMA
+10:07:29.974 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLLANG
+10:07:29.978 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLLANG
+10:07:29.986 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+10:07:29.988 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.xmlbeans.metadata.system.sXMLCONFIG
+10:07:29.992 [TestNG-PoolService-2] TRACE - Reading unresolved handles for type system org.apache.poi.schemas.ooxml.system.ooxml
+10:07:30.355 [TestNG-PoolService-2] TRACE - Finished loading type system org.apache.poi.schemas.ooxml.system.ooxml
+10:07:30.361 [TestNG-PoolService-2] TRACE - Resolving type for handle ctworkbook83c3type
+10:07:30.694 [TestNG-PoolService-2] TRACE - Resolving type for handle ctworkbookpr03a5type
+10:07:30.862 [TestNG-PoolService-2] TRACE - Resolving type for handle ctbookviewsb864type
+10:07:30.959 [TestNG-PoolService-2] TRACE - Resolving type for handle ctbookviewf677type
+10:07:31.043 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheets49fdtype
+10:07:31.087 [TestNG-PoolService-2] TRACE - Resolving type for handle propertiesee84doctype
+10:07:31.110 [TestNG-PoolService-2] TRACE - Resolving type for handle ctproperties3f10type
+10:07:31.187 [TestNG-PoolService-2] TRACE - Resolving type for handle properties288cdoctype
+10:07:31.192 [TestNG-PoolService-2] TRACE - Resolving type for handle ctproperties2c18type
+10:07:31.208 [TestNG-PoolService-2] TRACE - Resolving type for handle sstf81fdoctype
+10:07:31.212 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsst44f3type
+10:07:31.228 [TestNG-PoolService-2] TRACE - Resolving type for handle stylesheet5d8bdoctype
+10:07:31.235 [TestNG-PoolService-2] TRACE - Resolving type for handle ctstylesheet4257type
+10:07:31.242 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfont14d8type
+10:07:31.256 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontsizeb3b9type
+10:07:31.280 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcolord2c2type
+10:07:31.313 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontname2dc3type
+10:07:31.327 [TestNG-PoolService-2] TRACE - Resolving type for handle stxstringf179type
+10:07:31.338 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontfamily685ctype
+10:07:31.344 [TestNG-PoolService-2] TRACE - Resolving type for handle stfontfamily9c6ctype
+10:07:31.360 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfontschemebf5dtype
+10:07:31.384 [TestNG-PoolService-2] TRACE - Resolving type for handle stfontschemef36dtype
+10:07:31.396 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfill550ctype
+10:07:31.402 [TestNG-PoolService-2] TRACE - Resolving type for handle ctpatternfill7452type
+10:07:31.415 [TestNG-PoolService-2] TRACE - Resolving type for handle stpatterntype7939type
+10:07:31.450 [TestNG-PoolService-2] TRACE - Resolving type for handle ctborderf935type
+10:07:31.465 [TestNG-PoolService-2] TRACE - Resolving type for handle ctborderpre497type
+10:07:31.493 [TestNG-PoolService-2] TRACE - Resolving type for handle ctxf97f7type
+10:07:31.514 [TestNG-PoolService-2] TRACE - Resolving type for handle stnumfmtid76fbtype
+10:07:31.531 [TestNG-PoolService-2] TRACE - Resolving type for handle stfontid9d63type
+10:07:31.560 [TestNG-PoolService-2] TRACE - Resolving type for handle stfillida097type
+10:07:31.575 [TestNG-PoolService-2] TRACE - Resolving type for handle stborderid1a80type
+10:07:31.593 [TestNG-PoolService-2] TRACE - Resolving type for handle stcellstylexfid70c7type
+10:07:31.679 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheet4dbetype
+10:07:31.712 [TestNG-PoolService-2] TRACE - Resolving type for handle ctworksheet530dtype
+10:07:31.730 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetformatprdef7type
+10:07:31.756 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetviewsb918type
+10:07:31.763 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetview0f43type
+10:07:31.826 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetdimensiond310type
+10:07:31.837 [TestNG-PoolService-2] TRACE - Resolving type for handle stref90a2type
+10:07:31.849 [TestNG-PoolService-2] TRACE - Resolving type for handle ctsheetdata8408type
+10:07:31.855 [TestNG-PoolService-2] TRACE - Resolving type for handle ctpagemargins5455type
+10:07:31.878 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcols627ctype
+10:07:31.892 [TestNG-PoolService-2] TRACE - Resolving type for handle strelationshipid1e94type
+10:07:31.898 [TestNG-PoolService-2] TRACE - Resolving type for handle ctrowdd39type
+10:07:31.913 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcell842btype
+10:07:31.936 [TestNG-PoolService-2] TRACE - Resolving type for handle stcellrefe4e0type
+10:07:31.949 [TestNG-PoolService-2] TRACE - Resolving type for handle ctrsta472type
+10:07:31.961 [TestNG-PoolService-2] TRACE - Resolving type for handle stcelltypebf95type
+10:07:32.355 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:32.360 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:32.431 [TestNG-PoolService-2] TRACE - Resolving type for handle themefd26doctype
+10:07:32.525 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfonts6623type
+10:07:32.531 [TestNG-PoolService-2] TRACE - Resolving type for handle ctfills2c6ftype
+10:07:32.538 [TestNG-PoolService-2] TRACE - Resolving type for handle ctborders0d66type
+10:07:32.562 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcellxfs1322type
+10:07:32.573 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcellstylexfsa81ftype
+10:07:32.586 [TestNG-PoolService-2] TRACE - Resolving type for handle ctdxfsb26atype
+10:07:32.597 [TestNG-PoolService-2] TRACE - Resolving type for handle cttablestyles872ftype
+10:07:32.645 [TestNG-PoolService-2] TRACE - Resolving type for handle workbookec17doctype
+10:07:32.659 [TestNG-PoolService-2] TRACE - Resolving type for handle worksheetf539doctype
+10:07:32.680 [TestNG-PoolService-2] TRACE - Resolving type for handle ctcola95ftype
+10:07:32.732 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:32.736 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:32.797 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:32.799 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:32.903 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:32.911 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:32.987 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:32.989 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:33.036 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:33.038 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:33.090 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:33.092 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:33.162 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:33.165 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:33.198 [TestNG-PoolService-2] INFO  - Filling gift card form
+10:07:35.761 [TestNG-PoolService-1] INFO  - Launching Cab Page
+10:07:42.928 [TestNG-PoolService-1] INFO  - Selected cities
+10:07:50.101 [TestNG-PoolService-2] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:50.101 [TestNG-PoolService-2] DEBUG - Parsing relationship: /_rels/.rels
+10:07:50.116 [TestNG-PoolService-2] TRACE - Resolving type for handle ctnumfmtsb58btype
+10:07:50.580 [TestNG-PoolService-2] DEBUG - Save content types part
+10:07:50.883 [TestNG-PoolService-2] DEBUG - Save package relationships
+10:07:50.891 [TestNG-PoolService-2] DEBUG - Save part 'docProps/app.xml'
+10:07:50.893 [TestNG-PoolService-2] DEBUG - Save part 'docProps/core.xml'
+10:07:50.906 [TestNG-PoolService-2] DEBUG - Save part 'xl/sharedStrings.xml'
+10:07:50.908 [TestNG-PoolService-2] DEBUG - Save part 'xl/styles.xml'
+10:07:50.911 [TestNG-PoolService-2] DEBUG - Save part 'xl/workbook.xml'
+10:07:50.914 [TestNG-PoolService-2] DEBUG - Save part 'xl/worksheets/sheet1.xml'
+10:07:54.186 [TestNG-PoolService-3] INFO  - Max Adult Count retrieved
+10:07:54.802 [TestNG-PoolService-3] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:54.804 [TestNG-PoolService-3] DEBUG - Parsing relationship: /_rels/.rels
+10:07:54.892 [TestNG-PoolService-3] DEBUG - Save content types part
+10:07:54.896 [TestNG-PoolService-3] DEBUG - Save package relationships
+10:07:54.898 [TestNG-PoolService-3] DEBUG - Save part 'docProps/app.xml'
+10:07:54.898 [TestNG-PoolService-3] DEBUG - Save part 'docProps/core.xml'
+10:07:54.902 [TestNG-PoolService-3] DEBUG - Save part 'xl/sharedStrings.xml'
+10:07:54.902 [TestNG-PoolService-3] DEBUG - Save part 'xl/styles.xml'
+10:07:54.905 [TestNG-PoolService-3] DEBUG - Save part 'xl/workbook.xml'
+10:07:54.909 [TestNG-PoolService-3] DEBUG - Save part 'xl/worksheets/sheet1.xml'
+10:07:55.755 [TestNG-PoolService-1] INFO  - SUV filter clicked
+10:07:56.992 [TestNG-PoolService-1] DEBUG - Parsing relationship: /xl/_rels/workbook.xml.rels
+10:07:56.992 [TestNG-PoolService-1] DEBUG - Parsing relationship: /_rels/.rels
+10:07:57.069 [TestNG-PoolService-1] DEBUG - Save content types part
+10:07:57.074 [TestNG-PoolService-1] DEBUG - Save package relationships
+10:07:57.079 [TestNG-PoolService-1] DEBUG - Save part 'docProps/app.xml'
+10:07:57.083 [TestNG-PoolService-1] DEBUG - Save part 'docProps/core.xml'
+10:07:57.086 [TestNG-PoolService-1] DEBUG - Save part 'xl/sharedStrings.xml'
+10:07:57.087 [TestNG-PoolService-1] DEBUG - Save part 'xl/styles.xml'
+10:07:57.087 [TestNG-PoolService-1] DEBUG - Save part 'xl/workbook.xml'
+10:07:57.090 [TestNG-PoolService-1] DEBUG - Save part 'xl/worksheets/sheet1.xml'
+10:08:01.091 [TestNG-PoolService-2] INFO  - Browser closed
+10:08:01.095 [TestNG-PoolService-2] INFO  - Scenario PASSED: Fill gift card form with invalid email and validate error
+10:08:01.095 [TestNG-PoolService-2] INFO  - Browser closed
+10:08:03.332 [TestNG-PoolService-1] INFO  - Browser closed
+10:08:03.333 [TestNG-PoolService-1] INFO  - Scenario PASSED: Book one way outstation cab
+10:08:03.333 [TestNG-PoolService-1] INFO  - Browser closed
+10:08:04.415 [TestNG-PoolService-3] INFO  - Browser closed
+10:08:04.417 [TestNG-PoolService-3] INFO  - Scenario PASSED: Maximum adult can accommodate in a room
+10:08:04.417 [TestNG-PoolService-3] INFO  - Browser closed
+>>>>>>> yassu

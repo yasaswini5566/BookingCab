@@ -20,7 +20,8 @@ import org.testng.annotations.DataProvider;
         publish = false
 )
 
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class
+TestRunner extends AbstractTestNGCucumberTests {
 
     // This method enables parallel execution of scenarios
     @Override
