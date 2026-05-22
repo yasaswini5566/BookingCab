@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import utils.ExcelUtil;
-import utils.LoggerUtil;
 
 import java.time.Duration;
 import java.util.List;

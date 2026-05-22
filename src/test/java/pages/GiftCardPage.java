@@ -4,8 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import utils.ExcelUtil;
-import utils.LoggerUtil;
-import utils.ScreenshotUtil;
 
 import java.time.Duration;
 

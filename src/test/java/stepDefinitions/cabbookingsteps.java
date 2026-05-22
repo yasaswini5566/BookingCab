@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 import pages.CabPage;
-import factory.DriverFactory;
 import org.openqa.selenium.WebDriver;
 
 public class cabbookingsteps {

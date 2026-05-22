@@ -1,6 +1,5 @@
 package hooks;
 
-import factory.DriverFactory;
 import io.cucumber.java.*;
 import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;

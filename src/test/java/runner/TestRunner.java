@@ -9,6 +9,8 @@ import org.testng.annotations.DataProvider;
         glue = {"stepDefinitions", "hooks"},
         plugin = {
                 "pretty",
+                "html:reports/myreport.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "html:target/cucumber-reports/cucumber.html",
                 "json:target/cucumber.json",
                 "timeline:target/test-output-thread/",
@@ -18,10 +20,12 @@ import org.testng.annotations.DataProvider;
         publish = false
 )
 
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class
+TestRunner extends AbstractTestNGCucumberTests {
 
+    // This method enables parallel execution of scenarios
     @Override
-    @DataProvider(parallel = false)
+    @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return super.scenarios();
     }

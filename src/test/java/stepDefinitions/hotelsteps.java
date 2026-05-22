@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 import pages.HotelPage;
-import factory.DriverFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
