@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
                 "pretty",
                 "html:reports/myreport.html",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "html:target/cucumber-reports/cucumber.html",
+                "html:t/cucumber-reports/cucumber.html",
                 "json:target/cucumber.json",
                 "timeline:target/test-output-thread/",
                 "rerun:target/rerun.txt"
