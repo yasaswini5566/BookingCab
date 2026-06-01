@@ -95,7 +95,7 @@ public class BaseTest {
         return log;
     }
 
-    //SETUP METHOD (like BaseTest.setup)
+    //SETUP METHOD
     public static void setUp() throws IOException {
 
         WebDriver driver = initializeBrowser();
@@ -105,7 +105,7 @@ public class BaseTest {
         getLogger().info("Navigated to application URL");
     }
 
-    //TEARDOWN METHOD (like BaseTest.tearDown)
+    //TEARDOWN METHOD
     public static void tearDown() {
         quitDriver();
     }

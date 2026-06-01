@@ -88,7 +88,7 @@ public class CabPage {
         // Search
         wait.until(ExpectedConditions.elementToBeClickable(By.className("srch-btn-c"))).click();
         // SUV checkbox
-        By suvCheckbox = By.xpath("//*[@id=\"body\"]/app-root/div[3]/ng-component/div[2]/section[2]/div/div/div[1]/div/div[3]/div[2]/label[3]/div[1]/span[2]");
+        By suvCheckbox = By.xpath("//*[@id='body']/app-root/div[3]/ng-component/div[2]/section[2]/div/div/div[1]/div/div[3]/div[2]/label[3]/div[1]/span[2]");
         utils.ScreenshotUtil.takeScreenshot(driver,"page load");
         WebElement suvElement = wait.until(ExpectedConditions.presenceOfElementLocated(suvCheckbox));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", suvElement);
